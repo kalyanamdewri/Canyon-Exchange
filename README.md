@@ -12,6 +12,19 @@
 
 ---
 
+## 📌 Table of contents
+
+- [✨ Highlights](#-highlights)
+- [🧠 What this is](#-what-this-is)
+- [🏗️ Architecture (high level)](#️-architecture-high-level)
+- [🚀 Quick start](#-quick-start)
+- [📊 Performance notes](#-performance-notes)
+- [📁 Repository layout](#-repository-layout)
+- [🛣️ Suggested next steps](#️-suggested-next-steps)
+- [🤝 Contributing](#-contributing)
+
+---
+
 ## ✨ Highlights
 
 - **Price-time priority order matching** (FIFO within each price level).
@@ -131,4 +144,3 @@ PRs are welcome. Favor changes that include:
 - measurable performance impact,
 - deterministic tests,
 - and clear profiling evidence.
-
