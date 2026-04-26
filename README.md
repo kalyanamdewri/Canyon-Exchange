@@ -12,30 +12,6 @@
 
 ---
 
-## 📌 Table of contents
-
-- [✨ Highlights](#-highlights)
-- [🧠 What this is](#-what-this-is)
-- [🗺️ Full system visualization](#️-full-system-visualization)
-- [🏗️ Architecture (high level)](#️-architecture-high-level)
-- [🚀 Quick start](#-quick-start)
-- [📊 Performance notes](#-performance-notes)
-- [📁 Repository layout](#-repository-layout)
-- [🛣️ Suggested next steps](#️-suggested-next-steps)
-- [🤝 Contributing](#-contributing)
-
----
-
-## 🗺️ Full system visualization
-
-For a complete “all together” view (components, matching sequence, cancel sequence, threading model, and data model), open:
-
-- **[`docs/visualization.md`](docs/visualization.md)**  
-
-This file uses Mermaid and renders directly on GitHub.
-
----
-
 ## ✨ Highlights
 
 - **Price-time priority order matching** (FIFO within each price level).
@@ -138,16 +114,6 @@ CMakeLists.txt
 
 ---
 
-## 🛣️ Suggested next steps
-
-- Add binary protocol adapters (ITCH/OUCH-like framing).
-- Add deterministic replay input for benchmark reproducibility.
-- Separate top-of-book and trade channels.
-- Add multi-symbol partitioning + core affinity manager.
-- Add percentile histograms and per-stage latency breakdown.
-
----
-
 ## 🤝 Contributing
 
 PRs are welcome. Favor changes that include:
@@ -155,3 +121,4 @@ PRs are welcome. Favor changes that include:
 - measurable performance impact,
 - deterministic tests,
 - and clear profiling evidence.
+
