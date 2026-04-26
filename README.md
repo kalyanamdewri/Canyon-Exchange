@@ -12,73 +12,6 @@
 
 ---
 
-## 📌 Table of contents
-
-- [✨ Highlights](#-highlights)
-- [🧠 What this is](#-what-this-is)
-- [🗺️ Full system visualization](#️-full-system-visualization)
-- [🧊 3D-style system view](#-3d-style-system-view)
-- [🏗️ Architecture (high level)](#️-architecture-high-level)
-- [🚀 Quick start](#-quick-start)
-- [📊 Performance notes](#-performance-notes)
-- [📁 Repository layout](#-repository-layout)
-- [🛣️ Suggested next steps](#️-suggested-next-steps)
-- [🤝 Contributing](#-contributing)
-
----
-
-## 🗺️ Full system visualization
-
-For a complete “all together” view (components, matching sequence, cancel sequence, threading model, and data model), open:
-
-- **[`docs/visualization.md`](docs/visualization.md)**  
-
-This file uses Mermaid and renders directly on GitHub.
-
----
-
-## 🧊 3D-style system view
-
-```text
-                      ┌───────────────────────────────┐
-                     /      Client / Gateway         /|
-                    /───────────────────────────────/ |
-                    |           New Orders          | |
-                    |      (limit / cancel)         | /
-                    |_______________________________|/
-                                  │
-                                  ▼
-               ┌────────────────────────────────────────┐
-              /         Matching Engine Core           /|
-             /─────────────────────────────────────────/ |
-             |  Price-Time FIFO Matching              | |
-             |  - Bid book levels                     | |
-             |  - Ask book levels                     | |
-             |  - Cancel locator                      | /
-             |________________________________________|/
-                       │                      │
-                       │ updates               │ emits MarketEvent
-                       ▼                      ▼
-      ┌───────────────────────────┐   ┌───────────────────────────┐
-     /      Order Book State      /| /      SPSC Ring Buffer      /|
-    /────────────────────────────/ |/────────────────────────────/ |
-    | Bid/Ask price levels       | || Zero-copy single producer  | |
-    | FIFO queues per level      | || single consumer transport  | /
-    |____________________________|/ |____________________________|/
-                                               │
-                                               ▼
-                           ┌───────────────────────────────────────┐
-                          /      Market Data Consumer / Feed      /|
-                         /────────────────────────────────────────/ |
-                         | poll() -> downstream subscribers       | /
-                         |________________________________________|/
-```
-
-If you want richer animated/interactive visuals, open the Mermaid-based page:
-- **[`docs/visualization.md`](docs/visualization.md)**
-
----
-
 ## ✨ Highlights
 
 - **Price-time priority order matching** (FIFO within each price level).
@@ -181,16 +114,6 @@ CMakeLists.txt
 
 ---
 
-## 🛣️ Suggested next steps
-
-- Add binary protocol adapters (ITCH/OUCH-like framing).
-- Add deterministic replay input for benchmark reproducibility.
-- Separate top-of-book and trade channels.
-- Add multi-symbol partitioning + core affinity manager.
-- Add percentile histograms and per-stage latency breakdown.
-
----
-
 ## 🤝 Contributing
 
 PRs are welcome. Favor changes that include:
@@ -198,3 +121,4 @@ PRs are welcome. Favor changes that include:
 - measurable performance impact,
 - deterministic tests,
 - and clear profiling evidence.
+
